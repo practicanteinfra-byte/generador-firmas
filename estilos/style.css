@@ -2,7 +2,6 @@ body {
     margin: 0;
     min-height: 100vh;
 
-    /* Fondo amarillo + azul oscuro difuminado */
     background:
         radial-gradient(
             circle at 20% 30%,
@@ -19,11 +18,13 @@ body {
         linear-gradient(135deg, #ffdf00, #101d4f);
 
     display: flex;
-    flex-direction: column; /* IMPORTANTE */
+    flex-direction: column;
     align-items: center;
 
     font-family: Arial, sans-serif;
-    }
+}
+
+
 header {
     width: 100%;
     height: 100px;
@@ -36,16 +37,15 @@ header {
     box-sizing: border-box;
 }
 
+
 header img {
     width: 250px;
     height: auto;
 }
 
 
+/* // formulario */
 
-/* =========================
-   FORMULARIO
-========================= */
 .selector-marca {
     display: flex;
     justify-content: center;
@@ -61,6 +61,7 @@ header img {
 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
+
 
 .selector-marca button {
     margin: 0;
@@ -82,11 +83,13 @@ header img {
     transition: 0.3s;
 }
 
+
 .selector-marca button:hover {
     background: #eef4fa;
     transform: none;
     box-shadow: none;
 }
+
 
 .selector-marca button.marca-activa {
     background: #175a9b;
@@ -103,14 +106,17 @@ header img {
     text-align: center;
 }
 
+
 .form-container h1 {
     margin-bottom: 10px;
 }
+
 
 .form-container p {
     color: #666;
     margin-bottom: 25px;
 }
+
 
 form {
     display: flex;
@@ -118,10 +124,12 @@ form {
     gap: 10px;
 }
 
+
 label {
     text-align: left;
     font-weight: bold;
 }
+
 
 input {
     padding: 12px;
@@ -131,12 +139,13 @@ input {
     outline: none;
 }
 
+
 input:focus {
     border-color: #6d9ed8;
 }
-/* =========================================================
-   CAMPOS EXCLUSIVOS PETPLUS
-========================================================= */
+
+
+/* // campos petplus */
 
 #campos-petplus {
     display: flex;
@@ -145,15 +154,12 @@ input:focus {
 }
 
 
-/* Ocultar inicialmente */
-
 #campos-petplus.oculto {
     display: none;
 }
 
-/* =========================
-   BOTÓN
-========================= */
+
+/* // boton */
 
 button {
     margin-top: 15px;
@@ -174,7 +180,9 @@ button {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 @keyframes pulse {
+
     0% {
         transform: scale(1);
         box-shadow: 0 0 0 rgba(79, 134, 198, 0.5);
@@ -189,7 +197,9 @@ button {
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(79, 134, 198, 0);
     }
+
 }
+
 
 button:hover {
     background: #376da8;
@@ -199,9 +209,8 @@ button:hover {
     animation-play-state: paused;
 }
 
-/* =========================
-   FIRMA
-========================= */
+
+/* // firma */
 
 #firma {
     background: white;
@@ -220,9 +229,7 @@ button:hover {
 }
 
 
-/* =========================================================
-   PETPLUS
-========================================================= */
+/* // firma petplus */
 
 .firma-petplus {
     width: 100%;
@@ -234,12 +241,10 @@ button:hover {
     padding: 20px 35px;
 }
 
-/* =========================================================
-   DATOS PETPLUS - IZQUIERDA
-========================================================= */
+
+/* // datos petplus */
 
 .firma-petplus .firma-datos {
-
     width: 390px;
 
     display: flex;
@@ -248,16 +253,12 @@ button:hover {
     justify-content: center;
 
     flex-shrink: 0;
-
 }
 
 
-/* =========================================================
-   NOMBRE
-========================================================= */
+/* // nombre */
 
 .firma-petplus .firma-nombre {
-
     color: #e34b2f;
 
     font-size: 30px;
@@ -269,16 +270,12 @@ button:hover {
     line-height: 1.1;
 
     margin-bottom: 8px;
-
 }
 
 
-/* =========================================================
-   CARGO
-========================================================= */
+/* // cargo */
 
 .firma-petplus .firma-cargo {
-
     color: #087c91;
 
     font-size: 20px;
@@ -290,16 +287,12 @@ button:hover {
     margin-bottom: 25px;
 
     white-space: nowrap;
-
 }
 
 
-/* =========================================================
-   TELÉFONO
-========================================================= */
+/* // telefono */
 
 .firma-petplus .firma-telefono {
-
     color: #e34b2f;
 
     font-size: 19px;
@@ -309,16 +302,12 @@ button:hover {
     line-height: 1.2;
 
     margin-bottom: 7px;
-
 }
 
 
-/* =========================================================
-   CORREO
-========================================================= */
+/* // correo */
 
 .firma-petplus .firma-correo {
-
     color: #087c91;
 
     font-size: 19px;
@@ -328,16 +317,12 @@ button:hover {
     line-height: 1.2;
 
     margin-bottom: 25px;
-
 }
 
 
-/* =========================================================
-   DIRECCIÓN
-========================================================= */
+/* // direccion */
 
 .firma-petplus .firma-direccion {
-
     color: #087c91;
 
     font-size: 17px;
@@ -347,16 +332,12 @@ button:hover {
     line-height: 1.2;
 
     white-space: nowrap;
-
 }
 
 
-/* =========================================================
-   SEPARADOR VERTICAL
-========================================================= */
+/* // separador petplus */
 
 .firma-petplus .firma-separador {
-
     width: 4px;
 
     height: 165px;
@@ -364,16 +345,12 @@ button:hover {
     background: #e34b2f;
 
     flex-shrink: 0;
-
 }
 
 
-/* =========================================================
-   LOGO PETPLUS - DERECHA
-========================================================= */
+/* // logo petplus */
 
 .firma-petplus .firma-logo {
-
     width: 300px;
     height: 180px;
 
@@ -383,16 +360,10 @@ button:hover {
     align-items: center;
 
     flex-shrink: 0;
-
 }
 
 
-/* =========================================================
-   IMAGEN DEL LOGO
-========================================================= */
-
 .firma-petplus .firma-logo img {
-
     width: 280px;
 
     height: auto;
@@ -400,16 +371,12 @@ button:hover {
     display: block;
 
     object-fit: contain;
-
 }
 
 
-/* =========================================================
-   PÁGINA WEB
-========================================================= */
+/* // pagina web */
 
 #firma .firma-web {
-
     width: 100%;
 
     text-align: center;
@@ -421,11 +388,10 @@ button:hover {
     font-weight: normal;
 
     margin-top: 15px;
-
 }
-/* =========================================================
-   PUPPIS
-========================================================= */
+
+
+/* // firma puppis */
 
 #firma:has(.firma-puppis) {
     width: 1000px;
@@ -435,7 +401,7 @@ button:hover {
 }
 
 
-/* ---------- CONTENEDOR PUPPIS ---------- */
+/* // contenedor puppis */
 
 .firma-puppis {
     width: 100%;
@@ -450,7 +416,7 @@ button:hover {
 }
 
 
-/* ---------- LOGO PUPPIS ---------- */
+/* // logo puppis */
 
 .firma-puppis .firma-logo {
     width: 292px;
@@ -465,6 +431,7 @@ button:hover {
     overflow: hidden;
 }
 
+
 .firma-puppis .firma-logo img {
     width: 292px;
     height: 278px;
@@ -475,7 +442,7 @@ button:hover {
 }
 
 
-/* ---------- DATOS PUPPIS ---------- */
+/* // datos puppis */
 
 .firma-puppis .firma-datos {
     flex: 1;
@@ -488,7 +455,7 @@ button:hover {
 }
 
 
-/* ---------- NOMBRE PUPPIS ---------- */
+/* // nombre puppis */
 
 .firma-puppis .firma-nombre {
     color: #175a9b;
@@ -506,7 +473,7 @@ button:hover {
 }
 
 
-/* ---------- CARGO PUPPIS ---------- */
+/* // cargo puppis */
 
 .firma-puppis .firma-cargo {
     color: #175a9b;
@@ -521,7 +488,7 @@ button:hover {
 }
 
 
-/* ---------- LÍNEA PUPPIS ---------- */
+/* // linea puppis */
 
 .firma-puppis .firma-linea {
     width: 95%;
@@ -534,7 +501,7 @@ button:hover {
 }
 
 
-/* ---------- INFORMACIÓN PUPPIS ---------- */
+/* // informacion puppis */
 
 .firma-puppis .firma-info {
     color: #777777;
@@ -547,7 +514,7 @@ button:hover {
 }
 
 
-/* ---------- REDES PUPPIS ---------- */
+/* // redes puppis */
 
 .firma-puppis .firma-redes {
     display: flex;
@@ -558,6 +525,7 @@ button:hover {
 
     margin-top: 10px;
 }
+
 
 .firma-puppis .red-social {
     display: flex;
@@ -573,12 +541,13 @@ button:hover {
     font-weight: bold;
 }
 
+
 .firma-puppis .red-social i {
     font-size: 20px;
 }
-/* =========================================================
-   BOTÓN DESCARGA
-========================================================= */
+
+
+/* // boton descarga */
 
 .boton-descarga {
     display: block;
@@ -601,14 +570,15 @@ button:hover {
     transition: 0.3s;
 }
 
+
 .boton-descarga:hover {
     transform: scale(1.05);
 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
-/* ==========================================
-   CAMPOS EXCLUSIVOS DE PETPLUS
-========================================== */
+
+
+/* // campos exclusivos petplus */
 
 #campos-petplus {
     width: 100%;
@@ -616,8 +586,8 @@ button:hover {
     flex-direction: column;
     gap: 10px;
     box-sizing: border-box;
-    
 }
+
 
 #campos-petplus label {
     display: block;
@@ -625,8 +595,8 @@ button:hover {
     text-align: left;
     font-weight: bold;
     margin: 0;
-    
 }
+
 
 #campos-petplus input {
     display: block;
