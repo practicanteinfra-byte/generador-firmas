@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generar firma</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+</head>
+
+<body>
+<header>
+    <img src="logo final.png" alt="">
+</header>
+    
+    <div class="selector-marca">
+    <button type="button" class="marca-activa" onclick="cambiarMarca('petplus')">
+        PETPLUS
+    </button>
+
+    <button type="button" onclick="cambiarMarca('puppis')">
+        PUPPIS
+    </button>
+</div>
+    
+    
+    <div class="form-container">
+        <h1>Generador de Firma Corporativa</h1>
+        <p>completa los datos para crear tu firma</p>
+   <form action="">
+
+    <label for="nombre">Escribe el nombre:</label>
+    <input type="text" id="nombre" placeholder="Escribe el nombre" required>
+
+    <label for="cargo">Escribe el cargo:</label>
+    <input type="text" id="cargo" placeholder="Escribe tu cargo" required>
+
+<div id="campos-petplus">
+
+    <label for="telefono">Teléfono:</label>
+    <input
+        type="text"
+        id="telefono"
+        placeholder="+57 310 000 0000"
+    >
+
+    <label for="correo">Correo:</label>
+    <input
+        type="email"
+        id="correo"
+        placeholder="correo@petplus.com.co"
+    >
+
+</div>
+
+<button type="submit">Generar firma</button>
+
+</form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+
+let marcaSeleccionada = "petplus";
+
+
+/* =========================================================
+   CAMBIAR ENTRE PETPLUS Y PUPPIS
+========================================================= */
+
+function cambiarMarca(marca) {
+
+    marcaSeleccionada = marca;
+
+    const botones = document.querySelectorAll(
+        ".selector-marca button"
+    );
+
+    const camposPetplus =
+        document.getElementById("campos-petplus");
+
+
+    // Quitar marca activa
+    botones.forEach(boton => {
+        boton.classList.remove("marca-activa");
+    });
+
+
+    // Mostrar / ocultar campos de Petplus
+    if (marca === "petplus") {
+
+        botones[0].classList.add("marca-activa");
+
+        camposPetplus.style.display = "flex";
+
+    } else {
+
+        botones[1].classList.add("marca-activa");
+
+        camposPetplus.style.display = "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   GENERAR FIRMA
+========================================================= */
+
+document.querySelector("form").addEventListener(
+    "submit",
+    async function(e) {
+
+        e.preventDefault();
+
+        try {
+
+
+            /* =====================================================
+               OBTENER DATOS GENERALES
+            ===================================================== */
+
+            const nombre =
+                document.getElementById("nombre").value.trim();
+
+            const cargo =
+                document.getElementById("cargo").value.trim();
+
+
+            /* =====================================================
+               DATOS EXCLUSIVOS DE PETPLUS
+            ===================================================== */
+
+            let telefono = "";
+            let correo = "";
+
+            if (marcaSeleccionada === "petplus") {
+
+                const campoTelefono =
+                    document.getElementById("telefono");
+
+                const campoCorreo =
+                    document.getElementById("correo");
+
+
+                if (campoTelefono) {
+                    telefono = campoTelefono.value.trim();
+                }
+
+                if (campoCorreo) {
+                    correo = campoCorreo.value.trim();
+                }
+
+            }
+
+
+            /* =====================================================
+               VALIDAR NOMBRE Y CARGO
+            ===================================================== */
+
+            if (!nombre || !cargo) {
+
+                alert(
+                    "Por favor completa el nombre y el cargo."
+                );
+
+                return;
+
+            }
+
+
+            /* =====================================================
+               VALIDAR TELÉFONO Y CORREO SOLO EN PETPLUS
+            ===================================================== */
+
+            if (
+                marcaSeleccionada === "petplus" &&
+                (!telefono || !correo)
+            ) {
+
+                alert(
+                    "Por favor completa el teléfono y el correo."
+                );
+
+                return;
+
+            }
+
+
+            /* =====================================================
+               CREAR CONTENEDOR DE FIRMA
+            ===================================================== */
+
+            const firma =
+                document.createElement("div");
+
+            firma.id = "firma";
+
+
+            /* =====================================================
+               FIRMA PETPLUS
+            ===================================================== */
+
+            if (marcaSeleccionada === "petplus") {
+
+                firma.innerHTML = `
+
+                    <div class="firma firma-petplus">
+
+
+                        <!-- DATOS -->
+
+                        <div class="firma-datos">
+
+                            <div class="firma-nombre">
+                                ${nombre}
+                            </div>
+
+
+                            <div class="firma-cargo">
+                                ${cargo}
+                            </div>
+
+
+                            <div class="firma-telefono">
+                                ${telefono}
+                            </div>
+
+
+                            <div class="firma-correo">
+                                ${correo}
+                            </div>
+
+
+                            <div class="firma-direccion">
+                                Autopista norte #122-35 Edificio Mezco
+                            </div>
+
+                        </div>
+
+
+                        <!-- SEPARADOR -->
+
+                        <div class="firma-separador"></div>
+
+
+                        <!-- LOGO -->
+
+                        <div class="firma-logo">
+
+                            <img
+                                src="logo-petplus.png"
+                                alt="Petplus"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WEB -->
+
+                    <div class="firma-web">
+                        www.petplusclinica.com
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =====================================================
+               FIRMA PUPPIS
+               SIN TELÉFONO Y SIN CORREO
+            ===================================================== */
+
+            else {
+
+                firma.innerHTML = `
+
+                    <div class="firma firma-puppis">
+
+
+                        <!-- LOGO -->
+
+                        <div class="firma-logo">
+
+                            <img
+                                src="logo.png"
+                                alt="Puppis"
+                            >
+
+                        </div>
+
+
+                        <!-- DATOS -->
+
+                        <div class="firma-datos">
+
+                            <div class="firma-nombre">
+                                ${nombre}
+                            </div>
+
+
+                            <div class="firma-cargo">
+                                ${cargo}
+                            </div>
+
+
+                            <div class="firma-linea"></div>
+
+
+                            <div class="firma-info">
+
+                                Dir: CRA 45 #122 EDIFICIO<br>
+                                MEZCO OFICINA 402<br>
+                                WWW.PUPPIS.COM.CO
+
+                            </div>
+
+
+                            <!-- REDES -->
+
+                            <div class="firma-redes">
+
+                                <div class="red-social">
+
+                                    <i class="fa-brands fa-facebook-f"></i>
+
+                                    <span>
+                                        @PUPPISCOLOMBIA
+                                    </span>
+
+                                </div>
+
+
+                                <div class="red-social">
+
+                                    <i class="fa-brands fa-instagram"></i>
+
+                                    <span>
+                                        @PUPPISCOL
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =====================================================
+               COLOCAR FIRMA FUERA DE LA PANTALLA
+            ===================================================== */
+
+            firma.style.position = "absolute";
+            firma.style.left = "-9999px";
+            firma.style.top = "0";
+
+            document.body.appendChild(firma);
+
+
+            /* =====================================================
+               ESPERAR A QUE CARGUEN LAS IMÁGENES
+            ===================================================== */
+
+            const imagenes =
+                firma.querySelectorAll("img");
+
+
+            await Promise.all(
+
+                [...imagenes].map(img => {
+
+                    if (img.complete) {
+
+                        return Promise.resolve();
+
+                    }
+
+
+                    return new Promise(resolve => {
+
+                        img.onload = resolve;
+                        img.onerror = resolve;
+
+                    });
+
+                })
+
+            );
+
+
+            /* =====================================================
+               AJUSTAR TAMAÑO DEL CARGO
+            ===================================================== */
+
+            const cargoTexto =
+                firma.querySelector(".firma-cargo");
+
+
+            let tamaño;
+
+            if (marcaSeleccionada === "petplus") {
+
+                tamaño = 20;
+
+            } else {
+
+                tamaño = 24;
+
+            }
+
+
+            while (
+
+                cargoTexto.scrollWidth >
+                cargoTexto.parentElement.clientWidth
+
+                &&
+
+                tamaño > 12
+
+            ) {
+
+                tamaño--;
+
+                cargoTexto.style.fontSize =
+                    tamaño + "px";
+
+            }
+
+
+            /* =====================================================
+               VERIFICAR HTML2CANVAS
+            ===================================================== */
+
+            if (typeof html2canvas === "undefined") {
+
+                throw new Error(
+                    "html2canvas no está cargado."
+                );
+
+            }
+
+
+            /* =====================================================
+               GENERAR CANVAS
+            ===================================================== */
+
+            const canvas =
+                await html2canvas(firma, {
+
+                    scale: 3,
+
+                    backgroundColor: "#ffffff",
+
+                    useCORS: true,
+
+                    logging: false
+
+                });
+
+
+            /* =====================================================
+               CREAR DESCARGA
+            ===================================================== */
+
+            const enlace =
+                document.createElement("a");
+
+
+            const nombreArchivo =
+                nombre
+                    .replace(/\s+/g, "_")
+                    .replace(
+                        /[^a-zA-Z0-9_-]/g,
+                        ""
+                    );
+
+
+            enlace.download =
+                `firma_${marcaSeleccionada}_${nombreArchivo}.jpg`;
+
+
+            enlace.href =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.95
+                );
+
+
+            /* =====================================================
+               DESCARGAR
+            ===================================================== */
+
+            document.body.appendChild(enlace);
+
+            enlace.click();
+
+            enlace.remove();
+
+
+            /* =====================================================
+               ELIMINAR FIRMA TEMPORAL
+            ===================================================== */
+
+            firma.remove();
+
+
+        } catch (error) {
+
+            console.error(
+                "Error al generar la firma:",
+                error
+            );
+
+            alert(
+                "Ocurrió un error al generar la firma. " +
+                "Revisa la consola del navegador."
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+    
+    
+</body>
+</html>

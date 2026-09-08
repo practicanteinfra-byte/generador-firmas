@@ -1,0 +1,636 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    /* Fondo amarillo + azul oscuro difuminado */
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 221, 0, 0.9) 0%,
+            rgba(255, 221, 0, 0.4) 25%,
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(10, 25, 70, 0.95) 0%,
+            rgba(10, 25, 70, 0.7) 30%,
+            transparent 65%
+        ),
+        linear-gradient(135deg, #ffdf00, #101d4f);
+
+    display: flex;
+    flex-direction: column; /* IMPORTANTE */
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+    }
+header {
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 15px 30px;
+    box-sizing: border-box;
+}
+
+header img {
+    width: 250px;
+    height: auto;
+}
+
+
+
+/* =========================
+   FORMULARIO
+========================= */
+.selector-marca {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    background: white;
+    padding: 5px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.selector-marca button {
+    margin: 0;
+
+    padding: 12px 30px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #175a9b;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    animation: none;
+    transition: 0.3s;
+}
+
+.selector-marca button:hover {
+    background: #eef4fa;
+    transform: none;
+    box-shadow: none;
+}
+
+.selector-marca button.marca-activa {
+    background: #175a9b;
+    color: white;
+}
+
+
+.form-container {
+    width: 380px;
+    padding: 35px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.form-container h1 {
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #6d9ed8;
+}
+/* =========================================================
+   CAMPOS EXCLUSIVOS PETPLUS
+========================================================= */
+
+#campos-petplus {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Ocultar inicialmente */
+
+#campos-petplus.oculto {
+    display: none;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #4f86c6;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    animation: pulse 2s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(79, 134, 198, 0.5);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(79, 134, 198, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 134, 198, 0);
+    }
+}
+
+button:hover {
+    background: #376da8;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    animation-play-state: paused;
+}
+
+/* =========================
+   FIRMA
+========================= */
+
+#firma {
+    background: white;
+
+    box-sizing: border-box;
+
+    margin: 40px auto;
+
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PETPLUS
+========================================================= */
+
+.firma-petplus {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-sizing: border-box;
+    padding: 20px 35px;
+}
+
+/* =========================================================
+   DATOS PETPLUS - IZQUIERDA
+========================================================= */
+
+.firma-petplus .firma-datos {
+
+    width: 390px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   NOMBRE
+========================================================= */
+
+.firma-petplus .firma-nombre {
+
+    color: #e34b2f;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    line-height: 1.1;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================================================
+   CARGO
+========================================================= */
+
+.firma-petplus .firma-cargo {
+
+    color: #087c91;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   TELÉFONO
+========================================================= */
+
+.firma-petplus .firma-telefono {
+
+    color: #e34b2f;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    line-height: 1.2;
+
+    margin-bottom: 7px;
+
+}
+
+
+/* =========================================================
+   CORREO
+========================================================= */
+
+.firma-petplus .firma-correo {
+
+    color: #087c91;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================================
+   DIRECCIÓN
+========================================================= */
+
+.firma-petplus .firma-direccion {
+
+    color: #087c91;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   SEPARADOR VERTICAL
+========================================================= */
+
+.firma-petplus .firma-separador {
+
+    width: 4px;
+
+    height: 165px;
+
+    background: #e34b2f;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   LOGO PETPLUS - DERECHA
+========================================================= */
+
+.firma-petplus .firma-logo {
+
+    width: 300px;
+    height: 180px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   IMAGEN DEL LOGO
+========================================================= */
+
+.firma-petplus .firma-logo img {
+
+    width: 280px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================================
+   PÁGINA WEB
+========================================================= */
+
+#firma .firma-web {
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #d66b59;
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+    margin-top: 15px;
+
+}
+/* =========================================================
+   PUPPIS
+========================================================= */
+
+#firma:has(.firma-puppis) {
+    width: 1000px;
+    height: 278px;
+
+    padding: 0;
+}
+
+
+/* ---------- CONTENEDOR PUPPIS ---------- */
+
+.firma-puppis {
+    width: 100%;
+    height: 278px;
+
+    display: flex;
+    align-items: stretch;
+
+    gap: 22px;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------- LOGO PUPPIS ---------- */
+
+.firma-puppis .firma-logo {
+    width: 292px;
+    height: 278px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+}
+
+.firma-puppis .firma-logo img {
+    width: 292px;
+    height: 278px;
+
+    display: block;
+
+    object-fit: fill;
+}
+
+
+/* ---------- DATOS PUPPIS ---------- */
+
+.firma-puppis .firma-datos {
+    flex: 1;
+
+    padding-top: 15px;
+
+    box-sizing: border-box;
+
+    min-width: 0;
+}
+
+
+/* ---------- NOMBRE PUPPIS ---------- */
+
+.firma-puppis .firma-nombre {
+    color: #175a9b;
+
+    font-size: 38px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    line-height: 1.1;
+
+    margin-bottom: 6px;
+
+    white-space: nowrap;
+}
+
+
+/* ---------- CARGO PUPPIS ---------- */
+
+.firma-puppis .firma-cargo {
+    color: #175a9b;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    margin-top: 0;
+
+    white-space: nowrap;
+}
+
+
+/* ---------- LÍNEA PUPPIS ---------- */
+
+.firma-puppis .firma-linea {
+    width: 95%;
+
+    height: 3px;
+
+    background: #175a9b;
+
+    margin: 14px 0 20px 0;
+}
+
+
+/* ---------- INFORMACIÓN PUPPIS ---------- */
+
+.firma-puppis .firma-info {
+    color: #777777;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    line-height: 1.4;
+}
+
+
+/* ---------- REDES PUPPIS ---------- */
+
+.firma-puppis .firma-redes {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    margin-top: 10px;
+}
+
+.firma-puppis .red-social {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #175a9b;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+.firma-puppis .red-social i {
+    font-size: 20px;
+}
+/* =========================================================
+   BOTÓN DESCARGA
+========================================================= */
+
+.boton-descarga {
+    display: block;
+
+    margin: 20px auto;
+
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #175a9b;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.boton-descarga:hover {
+    transform: scale(1.05);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+/* ==========================================
+   CAMPOS EXCLUSIVOS DE PETPLUS
+========================================== */
+
+#campos-petplus {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    
+}
+
+#campos-petplus label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    margin: 0;
+    
+}
+
+#campos-petplus input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
