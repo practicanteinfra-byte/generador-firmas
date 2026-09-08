@@ -66,9 +66,7 @@
 let marcaSeleccionada = "petplus";
 
 
-/* =========================================================
-   CAMBIAR ENTRE PETPLUS Y PUPPIS
-========================================================= */
+/*CAMBIAR ENTRE PETPLUS Y PUPPIS */
 
 function cambiarMarca(marca) {
 
@@ -106,9 +104,7 @@ function cambiarMarca(marca) {
 }
 
 
-/* =========================================================
-   GENERAR FIRMA
-========================================================= */
+/*GENERAR FIRMA */
 
 document.querySelector("form").addEventListener(
     "submit",
@@ -119,9 +115,7 @@ document.querySelector("form").addEventListener(
         try {
 
 
-            /* =====================================================
-               OBTENER DATOS GENERALES
-            ===================================================== */
+            /*OBTENER DATOS GENERALES */
 
             const nombre =
                 document.getElementById("nombre").value.trim();
@@ -130,9 +124,7 @@ document.querySelector("form").addEventListener(
                 document.getElementById("cargo").value.trim();
 
 
-            /* =====================================================
-               DATOS EXCLUSIVOS DE PETPLUS
-            ===================================================== */
+            /* DATOS EXCLUSIVOS DE PETPLUS */
 
             let telefono = "";
             let correo = "";
@@ -157,9 +149,7 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               VALIDAR NOMBRE Y CARGO
-            ===================================================== */
+            /*VALIDAR NOMBRE Y CARGO*/
 
             if (!nombre || !cargo) {
 
@@ -172,9 +162,7 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               VALIDAR TELÉFONO Y CORREO SOLO EN PETPLUS
-            ===================================================== */
+            /*VALIDAR TELÉFONO Y CORREO SOLO EN PETPLUS */
 
             if (
                 marcaSeleccionada === "petplus" &&
@@ -190,9 +178,7 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               CREAR CONTENEDOR DE FIRMA
-            ===================================================== */
+            /*CREAR CONTENEDOR DE FIRMA */
 
             const firma =
                 document.createElement("div");
@@ -200,9 +186,7 @@ document.querySelector("form").addEventListener(
             firma.id = "firma";
 
 
-            /* =====================================================
-               FIRMA PETPLUS
-            ===================================================== */
+            /*FIRMA PETPLUS */
 
             if (marcaSeleccionada === "petplus") {
 
@@ -261,7 +245,7 @@ document.querySelector("form").addEventListener(
                     </div>
 
 
-                    <!-- WEB -->
+                    
 
                     <div class="firma-web">
                         www.petplusclinica.com
@@ -272,11 +256,8 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               FIRMA PUPPIS
-               SIN TELÉFONO Y SIN CORREO
-            ===================================================== */
-
+            
+              /*  FIRMA PUPPIS*/
             else {
 
                 firma.innerHTML = `
@@ -284,12 +265,12 @@ document.querySelector("form").addEventListener(
                     <div class="firma firma-puppis">
 
 
-                        <!-- LOGO -->
+                        
 
                         <div class="firma-logo">
 
                             <img
-                                src="logo.png"
+                                src="Logo.png"
                                 alt="Puppis"
                             >
 
@@ -358,9 +339,7 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               COLOCAR FIRMA FUERA DE LA PANTALLA
-            ===================================================== */
+            /*COLOCAR FIRMA FUERA DE LA PANTALLA */
 
             firma.style.position = "absolute";
             firma.style.left = "-9999px";
@@ -369,9 +348,7 @@ document.querySelector("form").addEventListener(
             document.body.appendChild(firma);
 
 
-            /* =====================================================
-               ESPERAR A QUE CARGUEN LAS IMÁGENES
-            ===================================================== */
+            /*ESPERAR A QUE CARGUEN LAS IMÁGENES*/
 
             const imagenes =
                 firma.querySelectorAll("img");
@@ -400,9 +377,7 @@ document.querySelector("form").addEventListener(
             );
 
 
-            /* =====================================================
-               AJUSTAR TAMAÑO DEL CARGO
-            ===================================================== */
+            /*AJUSTAR TAMAÑO DEL CARGO */
 
             const cargoTexto =
                 firma.querySelector(".firma-cargo");
@@ -440,9 +415,7 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               VERIFICAR HTML2CANVAS
-            ===================================================== */
+            /*VERIFICAR HTML2CANVAS */
 
             if (typeof html2canvas === "undefined") {
 
@@ -453,9 +426,7 @@ document.querySelector("form").addEventListener(
             }
 
 
-            /* =====================================================
-               GENERAR CANVAS
-            ===================================================== */
+            /*  GENERAR CANVAS*/
 
             const canvas =
                 await html2canvas(firma, {
@@ -471,9 +442,7 @@ document.querySelector("form").addEventListener(
                 });
 
 
-            /* =====================================================
-               CREAR DESCARGA
-            ===================================================== */
+            /* CREAR DESCARGA */
 
             const enlace =
                 document.createElement("a");
@@ -499,9 +468,7 @@ document.querySelector("form").addEventListener(
                 );
 
 
-            /* =====================================================
-               DESCARGAR
-            ===================================================== */
+            /*DESCARGAR */
 
             document.body.appendChild(enlace);
 
@@ -510,9 +477,7 @@ document.querySelector("form").addEventListener(
             enlace.remove();
 
 
-            /* =====================================================
-               ELIMINAR FIRMA TEMPORAL
-            ===================================================== */
+            /*ELIMINAR FIRMA TEMPORAL*/
 
             firma.remove();
 
